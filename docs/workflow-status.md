@@ -1,14 +1,13 @@
-
 ---
+layout: home
 title: Workflow Status
-layout: default
 nav_order: 2
 ---
 
-# Configuration
+# Workflow Status
 {: .no_toc }
 
-Just the Docs has some specific configuration parameters that can be defined in your Jekyll site's \_config.yml file.
+The statuses of the workflows
 {: .fs-6 .fw-300 }
 
 ## Table of contents

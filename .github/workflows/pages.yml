@@ -48,7 +48,7 @@ jobs:
         run: |
           cd scripts/
           npm i
-          node workflow-status.js --file=--file../docs/workflow-status.md
+          node workflow-updater.js --file=--file../docs/workflow-status.md
       # end update of workflow statuses
 
       - name: Build with Jekyll

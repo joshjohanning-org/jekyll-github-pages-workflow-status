@@ -26,10 +26,14 @@ The statuses of the workflows
 
 [![🚀🔐 Deploy Actions allow list](https://github.com/joshjohanning-org/actions-allow-list-as-code/actions/workflows/actions-allow-list.yml/badge.svg)](https://github.com/joshjohanning-org/actions-allow-list-as-code/actions/workflows/actions-allow-list.yml)
 
-## My Utility 1
+## My Utility 1 (private)
 
 [![CI](https://github.com/joshjohanning-org/test-repo-export/actions/workflows/blank.yml/badge.svg?branch=main)](https://github.com/joshjohanning-org/test-repo-export/actions/workflows/blank.yml)
 
-## My Utility 2
+## My Utility 2 (private)
 
 [![CI-other-job](https://github.com/joshjohanning-org/SAM-repo140-140/actions/workflows/blank.yml/badge.svg?event=push)](https://github.com/joshjohanning-org/SAM-repo140-140/actions/workflows/blank.yml)
+
+## Just the Docs repo
+
+[![Deploy Jekyll site to Pages](https://github.com/joshjohanning-org/jekyll-github-pages-workflow-status/actions/workflows/pages.yml/badge.svg)](https://github.com/joshjohanning-org/jekyll-github-pages-workflow-status/actions/workflows/pages.yml)

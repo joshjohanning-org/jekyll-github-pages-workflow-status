@@ -36,10 +36,6 @@ while ((match = regex.exec(content)) !== null) {
                 workflow_id: workflow.id,
                 per_page: 1
             }).then(response => {
-              if (response.data.workflow_runs.length === 0) {
-                  // Skip if there are no workflow runs
-                  return;
-              }
                 const run = response.data.workflow_runs[0];
                 // https://docs.github.com/en/rest/actions/workflow-runs?apiVersion=2022-11-28#list-workflow-runs-for-a-workflow
                 const statusColors = {
@@ -56,12 +52,20 @@ while ((match = regex.exec(content)) !== null) {
                     'queued': 'yellow',
                     'requested': 'yellow',
                     'waiting': 'blue',
-                    'pending': 'yellow'
+                    'pending': 'yellow',
+                    'no_runs': 'white'
                 };
-
-                const status = run.status === 'completed' ? (run.conclusion === 'success' ? 'success' : run.conclusion) : run.status;
-                const color = statusColors[status] || 'gray';
-                const badge = `[![${run.name} - ${status}](https://img.shields.io/static/v1?label=${run.name.replace(/ /g, '%20')}&message=${status.replace(/ /g, '%20')}&color=${color})](${url})`;                const badgeRegex = new RegExp(`(${currentMatch[0]}\\n\\n\\[!\\[.*?\\]\\(https:\\/\\/img\\.shields\\.io\\/.*?\\)\\]\\(${url}\\)|${currentMatch[0]})`, 'g');
+                let status;
+                let runName;
+                if (!response.data.workflow_runs.length) {
+                  status = 'no_runs';
+                  runName = workflow_file;
+                } else {
+                  status = run.status === 'completed' ? (run.conclusion === 'success' ? 'success' : run.conclusion) : run.status;
+                  runName = run.name;
+                }
+                const color = statusColors[status] || 'white';
+                const badge = `[![${runName} - ${status}](https://img.shields.io/static/v1?label=${runName.replace(/ /g, '%20')}&message=${status.replace(/ /g, '%20')}&color=${color})](${url})`;                const badgeRegex = new RegExp(`(${currentMatch[0]}\\n\\n\\[!\\[.*?\\]\\(https:\\/\\/img\\.shields\\.io\\/.*?\\)\\]\\(${url}\\)|${currentMatch[0]})`, 'g');
                 const newContent = `${currentMatch[0]}\n\n${badge}`;
 
                 updatedContent = updatedContent.replace(badgeRegex, newContent);

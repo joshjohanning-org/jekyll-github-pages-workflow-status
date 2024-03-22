@@ -34,6 +34,22 @@ The statuses of the workflows
 
 <!-- workflow_url: https://github.com/joshjohanning-org/SAM-repo140-140/actions/workflows/blank.yml -->
 
-## Just the Docs repo
+## jekyll-github-pages-workflow-status repo
 
 <!-- workflow_url: https://github.com/joshjohanning-org/jekyll-github-pages-workflow-status/actions/workflows/pages.yml -->
+
+## Long running workflow (in progress)
+
+<!-- workflow_url: https://github.com/joshjohanning-org/long-running-action/actions/workflows/long-job.yml -->
+
+## Long running workflow (queued job)
+
+<!-- workflow_url: https://github.com/joshjohanning-org/long-running-action/actions/workflows/queued-job.yml -->
+
+## Long running workflow (pending approval)
+
+<!-- workflow_url: https://github.com/joshjohanning-org/long-running-action/actions/workflows/pending-approval.yml -->
+
+## Long running workflow (no runs)
+
+<!-- workflow_url: https://github.com/joshjohanning-org/long-running-action/actions/workflows/no-runs.yml -->

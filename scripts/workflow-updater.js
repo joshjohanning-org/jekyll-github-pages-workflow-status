@@ -57,15 +57,19 @@ while ((match = regex.exec(content)) !== null) {
                 };
                 let status;
                 let runName;
+                let runUrl;
                 if (!response.data.workflow_runs.length) {
                   status = 'no_runs';
                   runName = workflow_file;
+                  runUrl = `https://github.com/${owner}/${repo}/actions/workflows/${workflow_file}`;
                 } else {
                   status = run.status === 'completed' ? (run.conclusion === 'success' ? 'success' : run.conclusion) : run.status;
                   runName = run.name;
+                  runUrl = `https://github.com/${owner}/${repo}/actions/runs/${run.id}`;
                 }
                 const color = statusColors[status] || 'white';
-                const badge = `[![${runName} - ${status}](https://img.shields.io/static/v1?label=${runName.replace(/ /g, '%20')}&message=${status.replace(/ /g, '%20')}&color=${color})](${url})`;                const badgeRegex = new RegExp(`(${currentMatch[0]}\\n\\n\\[!\\[.*?\\]\\(https:\\/\\/img\\.shields\\.io\\/.*?\\)\\]\\(${url}\\)|${currentMatch[0]})`, 'g');
+                const badge = `[![${runName} - ${status}](https://img.shields.io/static/v1?label=${runName.replace(/ /g, '%20')}&message=${status.replace(/ /g, '%20')}&color=${color})](${runUrl})`;
+                const badgeRegex = new RegExp(`(${currentMatch[0]}\\n\\n\\[!\\[.*?\\]\\(https:\\/\\/img\\.shields\\.io\\/.*?\\)\\]\\(${url}\\)|${currentMatch[0]})`, 'g');
                 const newContent = `${currentMatch[0]}\n\n${badge}`;
 
                 updatedContent = updatedContent.replace(badgeRegex, newContent);

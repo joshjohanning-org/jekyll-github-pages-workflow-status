@@ -1,4 +1,20 @@
-# just-the-docs-template
+# jekyll-github-pages-workflow-status/scripts
+
+[![Deploy Jekyll site to Pages](https://github.com/joshjohanning-org/jekyll-github-pages-workflow-status/actions/workflows/pages.yml/badge.svg)](https://github.com/joshjohanning-org/jekyll-github-pages-workflow-status/actions/workflows/pages.yml)
+
+Runs every 5 minutes to get the status of the jobs from the `./docs/workflow-status.md` file.
+
+Add the URL under the heading:
+
+```md
+## Actions Allow List as Code
+
+<!-- workflow_url: https://github.com/joshjohanning-org/actions-allow-list-as-code/actions/workflows/actions-allow-list.yml -->
+```
+
+The `./scripts/workflow-updater.js` script will update the status of the workflows in the `./docs/workflow-status.md` file.
+
+## just-the-docs notes
 
 This is a *bare-minimum* template to create a [Jekyll] site that:
 

@@ -16,6 +16,8 @@ Add the URL under the heading:
 
 The `./scripts/workflow-updater.js` script will update the status of the workflows in the `./docs/workflow-status.md` file.
 
+See the `statusColors` object in the `./scripts/workflow-updater.js` file to update the colors of the status.
+
 ## just-the-docs notes
 
 This is a *bare-minimum* template to create a [Jekyll] site that:

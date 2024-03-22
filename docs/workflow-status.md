@@ -1,7 +1,7 @@
 
 ---
 title: Workflow Status
-layout: home
+layout: default
 nav_order: 3
 ---
 

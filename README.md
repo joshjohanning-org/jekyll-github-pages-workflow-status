@@ -2,6 +2,8 @@
 
 [![Deploy Jekyll site to Pages](https://github.com/joshjohanning-org/jekyll-github-pages-workflow-status/actions/workflows/pages.yml/badge.svg)](https://github.com/joshjohanning-org/jekyll-github-pages-workflow-status/actions/workflows/pages.yml)
 
+⭐️ URL: [https://joshjohanning-org.github.io/jekyll-github-pages-workflow-status/docs/workflow-status.html](https://joshjohanning-org.github.io/jekyll-github-pages-workflow-status/docs/workflow-status.html)
+
 Runs every 5 minutes to get the status of the jobs from the `./docs/workflow-status.md` file.
 
 Add the URL under the heading:

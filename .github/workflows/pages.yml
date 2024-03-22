@@ -7,10 +7,10 @@
 name: Deploy Jekyll site to Pages
 
 on:
+  schedule:
+    - cron: "*/5 * * * *"
   push:
     branches: ["main"]
-
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
@@ -19,13 +19,7 @@ permissions:
   pages: write
   id-token: write
 
-# Allow one concurrent deployment
-concurrency:
-  group: "pages"
-  cancel-in-progress: true
-
 jobs:
-  # Build job
   build:
     runs-on: ubuntu-latest
     steps:
@@ -40,6 +34,23 @@ jobs:
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v4
+
+      # start update of workflow statuses
+      - uses: actions/create-github-app-token@v1
+        id: app-token
+        with:
+          # required
+          app-id: ${{ vars.APP_ID }}
+          private-key: ${{ secrets.PRIVATE_KEY }}
+      - name: update job statuses
+        env:
+          WORKFLOW_GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
+        run: |
+          cd scripts/
+          npm i
+          node update-job-statuses.js 
+      # end update of workflow statuses
+
       - name: Build with Jekyll
         # Outputs to the './_site' directory by default
         run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
@@ -49,7 +60,6 @@ jobs:
         # Automatically uploads an artifact from the './_site' directory by default
         uses: actions/upload-pages-artifact@v3
 
-  # Deployment job
   deploy:
     environment:
       name: github-pages

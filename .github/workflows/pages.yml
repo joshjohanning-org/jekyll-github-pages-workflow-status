@@ -8,7 +8,7 @@ name: Deploy Jekyll site to Pages
 
 on:
   schedule:
-    - cron: "*/5 * * * *"
+    - cron: '*/5 * * * *'
   push:
     branches: ["main"]
   workflow_dispatch:
@@ -39,9 +39,9 @@ jobs:
       - uses: actions/create-github-app-token@v1
         id: app-token
         with:
-          # required
           app-id: ${{ vars.APP_ID }}
           private-key: ${{ secrets.PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
       - name: update job statuses
         env:
           WORKFLOW_GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}

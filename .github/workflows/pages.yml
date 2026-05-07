@@ -36,7 +36,7 @@ jobs:
         uses: actions/configure-pages@v6
 
       # start update of workflow statuses
-      - uses: actions/create-github-app-token@v1
+      - uses: actions/create-github-app-token@v3
         id: app-token
         with:
           app-id: ${{ vars.APP_ID }}
